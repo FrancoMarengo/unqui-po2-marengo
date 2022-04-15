@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Counter {
 	
 	private ArrayList<Integer> listaDeNumeros = new ArrayList<Integer>();
-
+	
 	// Setter
 	public void addNumber(int numero) {
 		listaDeNumeros.add(numero);
