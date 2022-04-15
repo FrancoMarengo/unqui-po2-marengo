@@ -70,4 +70,29 @@ public class Counter {
     private boolean esPar(int numero) {
     	return ((numero % 2) == 0);
     }
+    
+    // Recibe dos valores x e y, retorna el mayor numero entre 0 y 1000 multiplo de ambos parametros
+    // Verificar si el metodo corresponde a la clase Counter, ya que no se especifica
+    public int mayorMultiplo(int x, int y) {
+    	int mayorNumeroPosibleHastaAhora = 1000;
+    	int numeroAVerificar = 1000;
+    	while ((numeroAVerificar > 0) && mayorNumeroPosibleHastaAhora == 1000) {
+    		if (esMultiploDeXY(numeroAVerificar, x, y)) {
+    			mayorNumeroPosibleHastaAhora = numeroAVerificar;
+    		}
+    		numeroAVerificar--;
+    	}
+    	if (numeroAVerificar == 0) {
+    		mayorNumeroPosibleHastaAhora = -1;
+    	}
+    	return mayorNumeroPosibleHastaAhora;
+    }
+    
+    private boolean esMultiploDeXY(int unNumero, int x, int y) {
+    	return ((esMultiploDe(unNumero, x)) && (esMultiploDe(unNumero, y)));
+    }
+    
+    private boolean esMultiploDe(int unNumero, int x) {
+    	return ((unNumero % x) == 0);
+    }
 }

@@ -67,4 +67,12 @@ public class CounterTestCase {
 		
 		assertEquals(numeroConMasDigitosPares, 222);
 	}
+	
+	// Verificar si el test corresponde a CounterTestCase, no se especifica
+	@Test
+	public void testMayorMultiploXY() {
+		int mayorMultiploEntreXY = counter.mayorMultiplo(3, 9);
+		
+		assert(mayorMultiploEntreXY == 999);
+	}
 }
