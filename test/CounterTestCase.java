@@ -23,10 +23,10 @@ public class CounterTestCase {
 		counter.addNumber(5);
 		counter.addNumber(7);
 		counter.addNumber(9);
+		counter.addNumber(23);
 		counter.addNumber(1);
-		counter.addNumber(1);
-		counter.addNumber(1);
-		counter.addNumber(1);
+		counter.addNumber(122);
+		counter.addNumber(222);
 		counter.addNumber(4);
 	}
 	
@@ -38,7 +38,7 @@ public class CounterTestCase {
 		
 		int cantidadPares = counter.cantidadPares();
 		
-		assertEquals(cantidadPares, 1);    
+		assertEquals(cantidadPares, 3);    
 	}
 	
 	// Verifica la cantidad de impares pero usando el assert
@@ -47,7 +47,7 @@ public class CounterTestCase {
 		
 		int cantidadImpares = counter.cantidadImpares();
 		
-		assert(cantidadImpares == 9);    
+		assert(cantidadImpares == 7);    
 	}
 	
 	// Verifica la cantidad de multiplos de 8
@@ -56,6 +56,15 @@ public class CounterTestCase {
 		
 		int cantidadMultiplos8 = counter.cantidadDeMultiplosDe(8);
 		
-		assert(cantidadMultiplos8 == 6);
+		assert(cantidadMultiplos8 == 3);
+	}
+	
+	// Testea el numero con mayor cantidad de digitos pares en el array
+	@Test
+	public void testNumeroConMasDigitosPares() {
+		
+		int numeroConMasDigitosPares = counter.numeroConMayorCantidadDigitosPares();
+		
+		assertEquals(numeroConMasDigitosPares, 222);
 	}
 }
