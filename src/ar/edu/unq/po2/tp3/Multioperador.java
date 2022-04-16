@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Multioperador {
     
+	// Ver si se debe crear una variable de instancia privada para el multioperador.
 	private ArrayList<Integer> arrayDeNumeros = new ArrayList<Integer>();
 	
 	public void agregarAlArray(int numero) {
