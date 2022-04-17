@@ -29,12 +29,16 @@ public class Point {
 		return puntoResultante;
 	}
 	
+	public boolean sonMismoPunto(Point unPunto) {
+	    return((this.getX() == unPunto.getX()) && (this.getY() == unPunto.getY()));
+	}
+	
 	//Getters y Setters
 	public int getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	private void setX(int x) {
 		this.x = x;
 	}
 
@@ -42,7 +46,7 @@ public class Point {
 		return y;
 	}
 
-	public void setY(int y) {
+	private void setY(int y) {
 		this.y = y;
 	}
 }
