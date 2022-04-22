@@ -6,4 +6,8 @@ public class ProductoPrimeraNecesidad extends Producto {
 		super(nombre, (precio * 0.9), esPrecioCuidado);
 	}
 	
+	public ProductoPrimeraNecesidad(String nombre, double precio, boolean esPrecioCuidado, double descuento) {
+		super(nombre, (precio * descuento), esPrecioCuidado);
+	}
+	
 }
