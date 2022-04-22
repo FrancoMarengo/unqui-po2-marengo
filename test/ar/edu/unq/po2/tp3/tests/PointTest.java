@@ -1,9 +1,10 @@
+package ar.edu.unq.po2.tp3.tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tp3.Point;
 
-public class PointTestCase {
+public class PointTest {
 	
 	@Test
 	public void inicializacionXYPointTestCase() {

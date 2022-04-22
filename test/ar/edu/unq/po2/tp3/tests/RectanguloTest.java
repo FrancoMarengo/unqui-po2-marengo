@@ -1,3 +1,4 @@
+package ar.edu.unq.po2.tp3.tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -5,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import ar.edu.unq.po2.tp3.Point;
 import ar.edu.unq.po2.tp3.Rectangulo;
 
-public class RectanguloTestCase {
+public class RectanguloTest {
 
 	private Rectangulo rectangulo;
 	

@@ -1,3 +1,4 @@
+package ar.edu.unq.po2.tp3.tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import ar.edu.unq.po2.tp3.Persona2;
 import ar.edu.unq.po2.tp3.EquipoDeTrabajo;
 
-public class EquipoDeTrabajoTestCase {
+public class EquipoDeTrabajoTest {
     private Persona2 personaFranco;
     private Persona2 personaMatias;
     private Persona2 personaLuis;

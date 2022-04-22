@@ -1,3 +1,4 @@
+package ar.edu.unq.po2.tp3.tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Period;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import ar.edu.unq.po2.tp3.Persona;
 
-public class PersonaTestCase {
+public class PersonaTest {
     private Persona persona;
     
     @BeforeEach

@@ -1,10 +1,11 @@
+package ar.edu.unq.po2.tp3.tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tp3.Counter;
 
-public class CounterTestCase {
+public class CounterTest {
 	private Counter counter;
 	/**
 	 * Crea un escenario de test básico, que consiste en un contador
