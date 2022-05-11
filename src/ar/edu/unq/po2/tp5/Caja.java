@@ -9,9 +9,9 @@ public class Caja {
 		this.setMontoTotalAPagar(0);
 	}
     
-	public void registrar(Producto producto) {
-		producto.modificarStock();
-		this.setMontoTotalAPagar(this.getMontoTotalAPagar() + producto.getPrecio());
+	public void registrar(Pagable pagable) {
+		pagable.registrar();
+		this.setMontoTotalAPagar(this.getMontoTotalAPagar() + pagable.getPrecio());
 	}
 	
 	public double getMontoTotalAPagar() {

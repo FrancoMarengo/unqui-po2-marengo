@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tp5;
 
-public class Producto {
+public class Producto implements Pagable{
 	
     private double precio;
     private int stock;
@@ -11,7 +11,7 @@ public class Producto {
     	this.setPrecio(precio);
     }
     
-    public void modificarStock() {
+    public void registrar() {
     	this.setStock(this.getStock() - 1);
     }
     

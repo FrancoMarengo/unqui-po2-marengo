@@ -4,7 +4,6 @@ public class ProductoDeCooperativa extends Producto {
     
 	public ProductoDeCooperativa(double precio, int stock) {
 		super(precio, stock);
-		
 	}
 	
 	public double getPrecio() {

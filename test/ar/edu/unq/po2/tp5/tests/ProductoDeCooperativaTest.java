@@ -31,8 +31,8 @@ public class ProductoDeCooperativaTest {
 	
 	@Test
 	public void testCaseModificarStockDeProducto() {
-		vinoDeCooperativa.modificarStock();
-		arrozDeCooperativa.modificarStock();
+		vinoDeCooperativa.registrar();
+		arrozDeCooperativa.registrar();
 		assertEquals(19, vinoDeCooperativa.getStock());
         assertEquals(39, arrozDeCooperativa.getStock());
 	}

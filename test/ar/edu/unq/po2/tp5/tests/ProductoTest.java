@@ -26,13 +26,13 @@ public class ProductoTest {
     @Test
     public void testCaseObtenerPrecioDeProducto() {
     	assertEquals(100d, vino.getPrecio());
-    	assertEquals(30d, arroz.getStock());
+    	assertEquals(30d, arroz.getPrecio());
     }
     
     @Test
     public void testCaseModificarStockDeProducto() {
-    	vino.modificarStock();
-    	arroz.modificarStock();
+    	vino.registrar();
+    	arroz.registrar();
     	assertEquals(vino.getStock(), 19);
     	assertEquals(arroz.getStock(), 49);
     }
