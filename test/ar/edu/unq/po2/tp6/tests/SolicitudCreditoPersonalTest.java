@@ -10,19 +10,28 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class SolicitudCreditoPersonalTest {
 
-	private SolicitudCreditoPersonal solicitud;
+	private SolicitudCreditoPersonal solicitudAceptable;
 	private Cliente cliente1;
 	private BancoClientes banco;
+	private Cliente cliente2;
+	private SolicitudCreditoPersonal solicitudNoAceptable;
 	
 	@BeforeEach
 	public void setUp() {
 		banco = new BancoClientes();
 		cliente1 = new Cliente("Juan", "Pastor", "Falsa 123", 25, 20000d, banco);
-		solicitud = new SolicitudCreditoPersonal(cliente1, 12000d, 6);
+		cliente2 = new Cliente("Pepe", "Gomez", "Falsa 234", 29, 1000d, banco); 
+		solicitudAceptable = new SolicitudCreditoPersonal(cliente1, 12000d, 6);
+		solicitudNoAceptable = new SolicitudCreditoPersonal(cliente2, 50000d, 8);
 	}
 	
 	@Test
-	public void testCaseConocerAlClienteSolicitante() {
-		assertEquals(solicitud.getCliente(), cliente1);
+	public void testCaseEsAceptable() {
+		assertTrue(solicitudAceptable.esAceptable());
 	}
+	
+	@Test
+	public void testCaseNoEsAceptable() {
+		assertFalse(solicitudNoAceptable.esAceptable());
+	} 
 }
