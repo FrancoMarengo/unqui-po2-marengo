@@ -16,32 +16,31 @@ public class PokerStatusTest {
 	}
 	
 	@Test
-	public void testCaseVerificarPokerStatusConPoker() throws Exception {
-		assertTrue(pokerStatus.verificar("QD", "QT", "QC", "5D", "QP"));    // Verify
+	public void testCaseVerificarPokerStatusPoker() throws Exception {
+		assertEquals(pokerStatus.verificar("QD", "QT", "QC", "5D", "QP"), "Poker");    // Verify
 	}
 	
 	@Test
-	public void testCaseVerificarPokerStatusSinPoker() throws Exception {
-		assertFalse(pokerStatus.verificar("QD", "6T", "KT", "1C", "QT"));    // Verify
+	public void testCaseVerificarPokerStatusColor() throws Exception {
+		assertEquals(pokerStatus.verificar("QD", "10D", "3D", "2D", "7D"), "Color");    // Verify
 	}
 	
 	@Test
-	public void testCaseVerificarPokerStatusConPokerRepetidas() throws Exception {
+	public void testCaseVerificarPokerStatusTrio() throws Exception {
+		assertEquals(pokerStatus.verificar("1D", "1C", "QD", "1T", "KP"), "Trio");    // Verify
+	}	
+	
+	@Test
+	public void testCaseVerificarPokerStatusSinJuego() throws Exception {
+		assertEquals(pokerStatus.verificar("1D", "2T", "QC", "KP", "5P"), "Nada");    // Verify
+	}
+	
+	@Test
+	public void testCaseVerificarPokerStatusConCartasRepetidas() {
 		try {
-			pokerStatus.verificar("QD", "QD", "QD", "QD", "QP");    // Excercise
-			fail("Error esperado");
-		}
-		catch (Exception e) {
-			assertEquals(e.getMessage(), "Error, se encontraron cartas repetidas");    // Verify
-		}
-	}
-	
-	@Test
-	public void testCaseVerificarPokerStatusSinPokerConRepetidas() throws Exception {
-		try {
-			pokerStatus.verificar("QD", "QD", "2D", "5T", "KC");    // Excercise
-			fail("Error esperado");
-		}
+			pokerStatus.verificar("1D", "1D", "QC", "KP", "5P");    // Excercise
+			fail("Se esperaba un error de cartas repetidas");
+		} 
 		catch (Exception e) {
 			assertEquals(e.getMessage(), "Error, se encontraron cartas repetidas");    // Verify
 		}
