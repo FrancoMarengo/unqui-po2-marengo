@@ -4,61 +4,67 @@ import java.util.ArrayList;
 
 public class PokerStatus {
 
-	public String verificar(String c1, String c2, String c3, String c4, String c5) throws Exception {
-		ArrayList<String> mano = new ArrayList<String>();
+	public String verificar(Carta c1, Carta c2, Carta c3, Carta c4, Carta c5) throws Exception {
+		ArrayList<Carta> mano = new ArrayList<Carta>();
 		mano.add(c1);
 		mano.add(c2);
 		mano.add(c3);
 		mano.add(c4);
 		mano.add(c5);
-		for(String carta:mano) {
-			if(mano.toString().lastIndexOf(carta) != mano.toString().indexOf(carta)) {
+		verificarErrorCartasRepetidas(mano);
+		return buscarJuegos(mano);
+	}
+	
+	private String buscarJuegos(ArrayList<Carta> mano) {
+		ArrayList<String> manoValores = new ArrayList<String>();
+		for(Carta carta:mano) {
+	    manoValores.add(carta.getValor());
+		}
+		ArrayList<String> manoValores2 = new ArrayList<String>();
+		for(String valor:manoValores) {
+			manoValores2.add(valor);
+		}
+		for(String valor:manoValores) {
+			int contadorMismosValores = 0;
+		    while(!manoValores2.isEmpty() && manoValores2.contains(valor)) {
+		    	manoValores2.remove(valor);
+		    	contadorMismosValores ++;
+		    }
+		    if(contadorMismosValores == 4) {
+			    return("Poker");
+		    } else if(contadorMismosValores == 3) {
+			    return("Trio");
+		    }
+	    }	
+		ArrayList<String> manoPalos = new ArrayList<String>();
+		for(Carta carta:mano) {
+			manoPalos.add(carta.getPalo());
+		}
+		ArrayList<String> manoPalos2 = new ArrayList<String>();
+		for(String palo:manoPalos) {
+			manoPalos2.add(palo);
+		}
+		for(String palo:manoPalos) {
+			int contadorMismosPalos = 0;
+			while(!manoPalos2.isEmpty() && manoPalos2.contains(palo)) {
+				manoPalos2.remove(palo);
+				contadorMismosPalos ++;
+		    }
+		    if(contadorMismosPalos == 5) {
+			    return("Color");
+		    }
+		}
+		return("Nada");
+	}
+	
+	private void verificarErrorCartasRepetidas(ArrayList<Carta> mano) throws Exception {
+		for(Carta carta:mano) {
+			ArrayList<Carta> mano2 = new ArrayList<Carta>();
+			mano2.addAll(mano);
+			mano2.remove(carta);
+			if(mano2.contains(carta)) {
 				throw new Exception("Error, se encontraron cartas repetidas");
 			}
 		}
-		ArrayList<String> colores = new ArrayList<String>();
-		for(String carta:mano) {
-			if(carta.length() == 2) {
-				colores.add(carta.substring(1));
-			} else {
-				colores.add(carta.substring(2));
-			}
-		}
-		for(String color:colores) {
-			int contadorDeColoresRepetidos = 0;
-			ArrayList<String> colores2 = new ArrayList<String>();
-			colores2.addAll(colores);
-			while(!(colores2.isEmpty()) && colores2.contains(color)) {
-				colores2.remove(color);
-				contadorDeColoresRepetidos ++;
-			}
-			if(contadorDeColoresRepetidos == 5) {
-				return("Color");
-			}
-		}
-		
-		ArrayList<String> valores = new ArrayList<String>();
-		for(String carta:mano) {
-			if(carta.length() == 2) {
-				valores.add(carta.substring(0, 1));
-			} else {
-			    valores.add(carta.substring(0, 2));
-			}
-		}
-		for(String valor:valores) {
-			int contadorDeValoresRepetidos = 0;
-			ArrayList<String> valores2 = new ArrayList<String>();
-			valores2.addAll(valores);
-			while(!(valores2.isEmpty()) && valores2.contains(valor)) {
-					valores2.remove(valor);
-					contadorDeValoresRepetidos ++;
-			}
-			if(contadorDeValoresRepetidos == 4) {
-				return("Poker");
-			} else if(contadorDeValoresRepetidos == 3) {
-				return("Trio");
-			}
-		}
-		return("Nada");
 	}
 }
