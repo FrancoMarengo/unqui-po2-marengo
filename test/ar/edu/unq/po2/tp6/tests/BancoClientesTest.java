@@ -2,7 +2,6 @@ package ar.edu.unq.po2.tp6.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tp6.BancoClientes;
