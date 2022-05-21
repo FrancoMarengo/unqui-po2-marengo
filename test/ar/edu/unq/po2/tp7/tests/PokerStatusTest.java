@@ -2,6 +2,9 @@ package ar.edu.unq.po2.tp7.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tp7.Carta;
@@ -9,65 +12,113 @@ import ar.edu.unq.po2.tp7.PokerStatus;
 
 public class PokerStatusTest {
 
-	private PokerStatus pokerStatus;
-	private Carta queenDiamante;
-	private Carta queenTrebol;
-	private Carta queenCorazon;
-	private Carta queenPica;
-	private Carta cincoDiamante;
-	private Carta asDiamante;
-	private Carta sieteDiamante;
-	private Carta kingDiamante;
-	private Carta cuatroTrebol;
+	PokerStatus pokerStatus; //SUT
+private Carta carta1;
+	private Carta carta2;
+	private Carta carta3;
+	private Carta carta4;
+	private Carta carta5;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		this.pokerStatus = new PokerStatus();
+		carta1 = mock(Carta.class);
+		carta2 = mock(Carta.class);
+		carta3 = mock(Carta.class);
+		carta4 = mock(Carta.class);
+		carta5 = mock(Carta.class);
+	}
 	
-	@BeforeEach    
-	public void setUp() {
-		pokerStatus = new PokerStatus();// setUp
-		queenDiamante = new Carta("Q", "D");
-		queenTrebol = new Carta("Q", "T");
-		queenCorazon = new Carta("Q", "C");
-		queenPica = new Carta("Q", "P");
-		cincoDiamante = new Carta("5", "D");
-		asDiamante = new Carta("1", "D");
-		sieteDiamante = new Carta("7", "D");
-		kingDiamante = new Carta("K", "D");
-		cuatroTrebol = new Carta("4", "T");
+	@Test
+	void test4CartasDelMismoValorIndicanPoker() {
+		// Setup
+		when(this.carta1.getValor()).thenReturn(1);
+		when(this.carta1.getPalo()).thenReturn("D");
 		
+		when(this.carta2.getValor()).thenReturn(1);
+		when(this.carta2.getPalo()).thenReturn("P");
+		
+		when(this.carta3.getValor()).thenReturn(1);
+		when(this.carta3.getPalo()).thenReturn("C");
+		
+		when(this.carta4.getValor()).thenReturn(1);
+		when(this.carta4.getPalo()).thenReturn("T");
+
+		when(this.carta5.getValor()).thenReturn(4);
+		when(this.carta5.getPalo()).thenReturn("P");
+		//Exercise 
+		String resultado = this.pokerStatus.verificar(carta1,carta2,carta3,carta4,carta5);
+		//Verify
+		assertEquals("poker",resultado);
 	}
+
+	@Test
+	void test5CartasDelMismoPaloIndicanColor() {
+		//Setup
+		when(this.carta1.getValor()).thenReturn(1);
+		when(this.carta1.getPalo()).thenReturn("D");
+		
+		when(this.carta2.getValor()).thenReturn(2);
+		when(this.carta2.getPalo()).thenReturn("D");
+		
+		when(this.carta3.getValor()).thenReturn(3);
+		when(this.carta3.getPalo()).thenReturn("D");
+		
+		when(this.carta4.getValor()).thenReturn(4);
+		when(this.carta4.getPalo()).thenReturn("D");
+
+		when(this.carta5.getValor()).thenReturn(5);
+		when(this.carta5.getPalo()).thenReturn("D");
+
+		//Exercise
+		String resultado = this.pokerStatus.verificar(carta1,carta2,carta3,carta4,carta5);
+		//Verify
+		assertEquals("color",resultado);
+	}
+
 	
 	@Test
-	public void testCaseVerificarPokerStatusPoker() throws Exception {
-		assertEquals(pokerStatus.verificar(cincoDiamante, queenTrebol, queenCorazon, queenDiamante, queenPica),
-				                           "Poker");    // Verify
+	void test3CartasDelMismoValorIndicanTrio() {
+		//Setup
+		when(this.carta1.getValor()).thenReturn(1);
+		when(this.carta1.getPalo()).thenReturn("D");
+		
+		when(this.carta2.getValor()).thenReturn(1);
+		when(this.carta2.getPalo()).thenReturn("P");
+		
+		when(this.carta3.getValor()).thenReturn(1);
+		when(this.carta3.getPalo()).thenReturn("C");
+		
+		when(this.carta4.getValor()).thenReturn(6);
+		when(this.carta4.getPalo()).thenReturn("T");
+
+		when(this.carta5.getValor()).thenReturn(4);
+		when(this.carta5.getPalo()).thenReturn("P");
+		//Exercise
+		String resultado = this.pokerStatus.verificar(carta1,carta2,carta3,carta4,carta5);
+		//Verify
+		assertEquals("trio",resultado);
 	}
-	
 	@Test
-	public void testCaseVerificarPokerStatusColor() throws Exception {
-		assertEquals(pokerStatus.verificar(queenDiamante, cincoDiamante, asDiamante, sieteDiamante, kingDiamante),
-				                           "Color");    // Verify
+	void testCartasDiferentesValorYPaloNoIndicanNada() {
+		//Setup
+		when(this.carta1.getValor()).thenReturn(1);
+		when(this.carta1.getPalo()).thenReturn("D");
+		
+		when(this.carta2.getValor()).thenReturn(2);
+		when(this.carta2.getPalo()).thenReturn("P");
+		
+		when(this.carta3.getValor()).thenReturn(3);
+		when(this.carta3.getPalo()).thenReturn("C");
+		
+		when(this.carta4.getValor()).thenReturn(4);
+		when(this.carta4.getPalo()).thenReturn("T");
+
+		when(this.carta5.getValor()).thenReturn(5);
+		when(this.carta5.getPalo()).thenReturn("P");
+		//Exercise
+		String resultado = this.pokerStatus.verificar(carta1,carta2,carta3,carta4,carta5);
+		//Verify
+		assertEquals("",resultado);
 	}
-	
-	@Test
-	public void testCaseVerificarPokerStatusTrio() throws Exception {
-		assertEquals(pokerStatus.verificar(queenDiamante, queenTrebol, queenCorazon, cincoDiamante, asDiamante),
-				                           "Trio");    // Verify
-	}	
-	
-	@Test
-	public void testCaseVerificarPokerStatusSinJuego() throws Exception {
-		assertEquals(pokerStatus.verificar(queenDiamante, cincoDiamante, queenPica, cuatroTrebol, kingDiamante),
-				                           "Nada");    // Verify
-	}
-	
-	@Test
-	public void testCaseVerificarPokerStatusConCartasRepetidas() {
-		try {
-			pokerStatus.verificar(queenDiamante, queenDiamante, cuatroTrebol, asDiamante, kingDiamante);    // Excercise
-			fail("Se esperaba un error de cartas repetidas");
-		} 
-		catch (Exception e) {
-			assertEquals(e.getMessage(), "Error, se encontraron cartas repetidas");    // Verify
-		}
-	}
-	// En ninguno de los casos se realiza tearDown, se encarga de eso el GarbageCollector
 }

@@ -14,14 +14,14 @@ public class CartaTest {
 	
 	@BeforeEach
 	public void setUp() {
-		tresDiamante = new Carta("3", "D");
-		diezDiamante = new Carta("10", "D");
-		queenTrebol = new Carta("Q", "T" );
+		tresDiamante = new Carta(3, "D");
+		diezDiamante = new Carta(10, "D");
+		queenTrebol = new Carta(13, "T" );
 	}
 	
 	@Test
 	public void testCaseConocerElValorDeUnaCarta() {
-		assertEquals(tresDiamante.getValor(), "3");
+		assertEquals(tresDiamante.getValor(), 3);
 	}
 	
 	@Test
@@ -31,14 +31,14 @@ public class CartaTest {
 	
 	@Test
 	public void testCaseCompararValoresEntreCartas() {
-		assertTrue(queenTrebol.esSuperiorA(tresDiamante));
-		assertFalse(tresDiamante.esSuperiorA(diezDiamante));
+		assertTrue(queenTrebol.esMayorQueOtraCarta(tresDiamante));
+		assertFalse(tresDiamante.esMayorQueOtraCarta(diezDiamante));
 	}
 	
 	@Test
 	public void testCaseCompararPalosEntreCartas() {
-		assertTrue(diezDiamante.tieneMismoPaloQue(tresDiamante));
-		assertFalse(tresDiamante.tieneMismoPaloQue(queenTrebol));
+		assertTrue(diezDiamante.tieneMismoPaloQueOtraCarta(tresDiamante));
+		assertFalse(tresDiamante.tieneMismoPaloQueOtraCarta(queenTrebol));
 	}
 	
 	
